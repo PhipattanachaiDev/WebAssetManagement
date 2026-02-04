@@ -1,0 +1,114 @@
+<p-toast></p-toast>
+<p-confirmDialog 
+  [style]="{ width: '420px' }"
+  [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-text">
+</p-confirmDialog>
+
+<div class="p-6">
+
+  <!-- HEADER -->
+  <div class="flex justify-between items-center mb-6">
+    <div>
+      <h2 class="text-2xl font-bold text-slate-800">Asset List</h2>
+      <p class="text-sm text-slate-500">Manage all assets list</p>
+    </div>
+
+    <button 
+      pButton 
+      icon="pi pi-plus" 
+      label="New Asset"
+      class="px-4 py-2 font-semibold"
+      (click)="openNew()">
+    </button>
+  </div>
+
+  <!-- TABLE CARD -->
+  <div class="bg-white rounded-2xl shadow-sm border overflow-hidden">
+
+    <p-table 
+      [value]="assets" 
+      [loading]="loading"
+      [paginator]="true"
+      [rows]="8"
+      responsiveLayout="scroll"
+      styleClass="p-datatable-sm">
+
+      <!-- HEADER -->
+      <ng-template pTemplate="header">
+        <tr class="bg-slate-50 text-slate-700">
+          <th class="px-4 py-3">Name</th>
+          <th class="px-4 py-3">Serial</th>
+          <th class="px-4 py-3">Category</th>
+          <th class="px-4 py-3 text-center w-40">Action</th>
+        </tr>
+      </ng-template>
+
+      <!-- BODY -->
+      <ng-template pTemplate="body" let-a>
+        <tr class="hover:bg-slate-50 transition border-b last:border-0">
+          
+          <td class="px-4 py-3 font-medium text-slate-800">
+            {{ a.name }}
+          </td>
+
+          <td class="px-4 py-3 text-slate-500">
+            {{ a.serialNumber }}
+          </td>
+
+          <td class="px-4 py-3">
+            <span 
+              class="px-3 py-1 text-xs rounded-full bg-blue-50 text-blue-700 font-semibold">
+              {{ a.categoryName }}
+            </span>
+          </td>
+
+          <td class="px-4 py-3">
+            <div class="flex justify-center gap-2">
+
+              <button 
+                pButton 
+                icon="pi pi-pencil" 
+                severity="secondary"
+                rounded
+                text
+                (click)="edit(a)">
+              </button>
+
+              <button 
+                pButton 
+                icon="pi pi-trash" 
+                severity="danger"
+                rounded
+                text
+                (click)="remove(a.id)">
+              </button>
+
+            </div>
+          </td>
+
+        </tr>
+      </ng-template>
+
+      <!-- EMPTY -->
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="4" class="text-center py-12 text-slate-400">
+            <i class="pi pi-inbox text-4xl mb-3 block"></i>
+            <div class="font-medium">No assets found</div>
+            <div class="text-sm">Click "New Asset" to create one</div>
+          </td>
+        </tr>
+      </ng-template>
+
+    </p-table>
+  </div>
+
+</div>
+
+<!-- FORM DIALOG -->
+<app-asset-form
+  [(visible)]="display"
+  [asset]="selected"
+  (saved)="loadAssets()">
+</app-asset-form>

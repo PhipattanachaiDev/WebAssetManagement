@@ -1,0 +1,51 @@
+<p-dialog [(visible)]="visible" [modal]="true" [draggable]="false" [closable]="false" [style]="{ width: '440px' }"
+  styleClass="asset-dialog-pro">
+
+  <div class="asset-form-wrapper">
+
+    <!-- HEADER -->
+    <div class="asset-form-header">
+      <div>
+        <h2>{{ asset ? 'Edit Asset' : 'New Asset' }}</h2>
+        <p>Manage asset information</p>
+      </div>
+
+      <button pButton icon="pi pi-times" rounded text severity="secondary"
+        (click)="visible=false; visibleChange.emit(false)">
+      </button>
+    </div>
+
+    <!-- FORM -->
+    <form [formGroup]="form" class="asset-form-body">
+
+      <div class="field">
+        <label>Asset Name</label>
+        <input pInputText placeholder="Macbook Pro M2" formControlName="name">
+      </div>
+
+      <div class="field">
+        <label>Serial Number</label>
+        <input pInputText placeholder="SN-XXXX-2026" formControlName="serialNumber">
+      </div>
+
+      <div class="field">
+        <label>Category</label>
+        <p-dropdown [options]="categories" optionLabel="name" optionValue="id" placeholder="Select category"
+          formControlName="categoryId" [appendTo]="'body'" scrollHeight="220px">
+        </p-dropdown>
+      </div>
+
+      <!-- ACTION -->
+      <div class="asset-form-footer">
+        <button pButton label="Cancel" severity="secondary" class="btn-cancel" type="button"
+          (click)="visible=false; visibleChange.emit(false)">
+        </button>
+
+        <button pButton label="Save Asset" class="btn-save" type="button" (click)="save()" [disabled]="form.invalid">
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+</p-dialog>

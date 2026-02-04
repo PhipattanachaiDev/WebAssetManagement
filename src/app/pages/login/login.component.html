@@ -1,0 +1,72 @@
+<div class="fixed inset-0 flex items-center justify-center bg-slate-50 overflow-hidden">
+
+  <!-- Blob background -->
+  <div
+    class="absolute -top-20 -left-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob">
+  </div>
+  <div
+    class="absolute top-0 -right-20 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000">
+  </div>
+  <div
+    class="absolute -bottom-20 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-4000">
+  </div>
+
+  <!-- CARD -->
+  <div class="login-card relative z-10 p-10 w-full max-w-md mx-4">
+
+    <div class="text-center mb-10">
+      <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 mb-2">
+        Welcome
+      </h1>
+      <p class="text-gray-400 font-medium">
+        {{ isRegister ? 'Create your account' : 'Asset Management' }}
+      </p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-6">
+
+      <!-- Username -->
+      <div>
+        <div class="login-input-wrapper" [class.error-border]="isFieldInvalid('username')">
+          <i class="pi pi-user input-icon pointer-events-none"></i>
+          <input pInputText type="text" placeholder="Username" formControlName="username" class="custom-text-input" />
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div>
+        <div class="login-input-wrapper" [class.error-border]="isFieldInvalid('password')">
+          <i class="pi pi-lock input-icon pointer-events-none"></i>
+
+          <p-password formControlName="password" [feedback]="false" [toggleMask]="true" placeholder="Password"
+            class="w-full h-full block" inputStyleClass="custom-pass-input">
+          </p-password>
+        </div>
+      </div>
+
+      <!-- Confirm password -->
+      <div *ngIf="isRegister">
+        <div class="login-input-wrapper"
+          [class.error-border]="isFieldInvalid('confirmPassword') || form.hasError('passwordMismatch')">
+          <i class="pi pi-lock input-icon pointer-events-none"></i>
+          <p-password formControlName="confirmPassword" [feedback]="false" [toggleMask]="true"
+            placeholder="Confirm Password" class="w-full h-full block" inputStyleClass="custom-pass-input">
+          </p-password>
+        </div>
+      </div>
+
+      <button pButton type="submit" class="login-btn w-full justify-center" [label]="isRegister ? 'Sign Up' : 'Sign In'"
+        [loading]="isLoading">
+      </button>
+
+    </form>
+
+    <div class="text-center text-sm mt-8 text-gray-500">
+      {{ isRegister ? 'Already have an account?' : "Don't have an account?" }}
+      <span class="text-blue-600 font-bold cursor-pointer hover:underline ml-1" (click)="toggleMode()">
+        {{ isRegister ? 'Login' : 'Create account' }}
+      </span>
+    </div>
+
+  </div>
+</div>

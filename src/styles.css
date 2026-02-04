@@ -1,3 +1,281 @@
-/* You can add global styles to this file, and also import other style files */
 
-@import "tailwindcss";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+app-root {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+router-outlet {
+  display: block;
+}
+
+app-login {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.login-input-wrapper {
+  position: relative;
+  height: 56px;
+  background: #f1f5f9;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  transition: all 0.25s ease;
+}
+
+.login-input-wrapper:focus-within {
+  background: white;
+  border-color: #3b82f6;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.login-input-wrapper.error-border {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 1.1rem;
+  z-index: 10;
+}
+
+.login-input-wrapper:focus-within .input-icon {
+  color: #2563eb;
+}
+
+.custom-text-input {
+  width: 100%;
+  height: 100%;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  padding-left: 3.2rem !important;
+  padding-right: 1rem !important;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.login-input-wrapper .p-password,
+.login-input-wrapper .p-inputwrapper,
+.login-input-wrapper .p-inputtext {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.login-input-wrapper .p-password {
+  display: flex;
+  align-items: center;
+}
+
+.login-input-wrapper .p-password input {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  padding-left: 3.2rem !important;
+  padding-right: 3rem !important;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 56px;
+  color: #0f172a;
+}
+
+.login-input-wrapper .p-password-toggle-mask-icon {
+  right: 1.1rem !important;
+  color: #94a3b8;
+}
+
+.login-input-wrapper .p-password-toggle-mask-icon:hover {
+  color: #2563eb;
+}
+
+.p-button {
+  border-radius: 12px;
+}
+
+button.p-button {
+  transition: all 0.2s ease;
+}
+
+.asset-dialog-pro .p-dialog {
+  border-radius: 22px;
+  box-shadow: 0 25px 70px rgba(15, 23, 42, 0.25);
+  border: none;
+}
+
+.asset-dialog-pro .p-dialog-content {
+  padding: 0;
+  overflow: hidden;
+}
+
+.asset-form-wrapper {
+  padding: 26px 28px 24px;
+}
+
+.asset-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.asset-form-header h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.asset-form-header p {
+  font-size: 13px;
+  color: #64748b;
+  margin: 4px 0 0;
+}
+
+.asset-form-body .field {
+  margin-bottom: 16px;
+}
+
+.asset-form-body label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.asset-form-body input,
+.asset-form-body .p-dropdown {
+  width: 100%;
+  border-radius: 14px !important;
+  padding: 10px 14px !important;
+  font-size: 14px;
+  font-weight: 500;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  transition: all 0.25s ease;
+}
+
+.asset-form-body input:focus,
+.asset-form-body .p-dropdown:not(.p-disabled).p-focus {
+  background: white;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+.asset-form-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.btn-cancel {
+  border-radius: 12px !important;
+  padding: 10px 18px !important;
+}
+
+.btn-save {
+  border-radius: 12px !important;
+  padding: 10px 22px !important;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(59,130,246,.35);
+}
+
+.p-dropdown-panel {
+  max-height: 260px !important;
+  overflow-y: auto !important;
+}
+
+.p-confirm-dialog .p-dialog-header {
+  padding: 1.25rem 1.5rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.p-confirm-dialog .p-dialog-content {
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+.p-confirm-dialog .p-confirm-dialog-icon {
+  font-size: 2.2rem;
+  color: #f59e0b; /* amber */
+}
+
+.p-confirm-dialog .p-dialog-footer {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* Cancel */
+.p-confirm-dialog .p-button-text {
+  color: #64748b;
+  font-weight: 600;
+}
+
+/* Delete */
+.p-confirm-dialog .p-button-danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1.25rem;
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(239, 68, 68, 0.35);
+}
+
+.p-confirm-dialog .p-button-danger:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.p-confirm-dialog .p-button-danger .p-button-label {
+  color: #fef9c3;            /* ขาว */
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.p-confirm-dialog .p-button-danger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;  
+}
+
+/* เปลี่ยนสีไอคอนถังขยะในปุ่ม Delete */
+.p-confirm-dialog .p-button-danger .pi-trash {
+  color: #87c33f !important; /* เทาเข้ม / almost black */
+}
+
+/* ถ้าอยากให้ hover แล้วเปลี่ยนสี */
+.p-confirm-dialog .p-button-danger:hover .pi-trash {
+  color: #ffffff !important; /* ขาวตอน hover */
+}
